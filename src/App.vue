@@ -20,9 +20,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-size: 16px;
 }
 #nav {
-  padding: 30px;
+  padding: 0.5rem;
   a {
     font-weight: bold;
     color: #2c3e50;
