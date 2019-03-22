@@ -6,6 +6,7 @@
     tabindex="0"
   >
     <NodeTree
+      :parent="null"
       :tree="root"
       :selectedId="selectedId"
       :setSelectedOnFocus="setSelectedOnFocus"

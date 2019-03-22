@@ -34,8 +34,8 @@ export default {
   },
   methods: {
     handleEnter() {
-      if (this.$data.parent) {
-        //
+      if (this.parent) {
+        this.parent.forest.push(nn())
       } else {
         // console.log(`this`, this)
         this.tree.forest.push(nn())
