@@ -35,12 +35,17 @@ export default {
   },
   methods: {
     handleEnter() {
+      let newTree = nn()
       if (this.parent) {
-        this.parent.forest.push(nn())
+        let forest = this.parent.forest
+        const idxOfTree = forest.findIndex(t => this.tree === t)
+
+        forest.splice(idxOfTree + 1, 0, newTree)
       } else {
         // console.log(`this`, this)
-        this.tree.forest.push(nn())
+        this.tree.forest.push(newTree)
       }
+      this.setSelectedOnFocus(newTree.id)
     },
   },
 }
