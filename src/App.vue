@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav" class="tc">
+    <div id="nav" class="tc pa3">
       <router-link to="/">Home</router-link> |
       <router-link to="/old-home">Old Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -22,7 +22,6 @@ body {
   font-size: 16px;
 }
 #nav {
-  padding: 0.5rem;
   a {
     font-weight: bold;
     color: #2c3e50;
