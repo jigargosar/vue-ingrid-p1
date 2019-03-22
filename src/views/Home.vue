@@ -41,9 +41,21 @@ export default {
     selectedId: 'id_root',
     root: cr(),
   }),
+  computed: {
+    flatIds: function() {
+      return Array.from(
+        this.$el.querySelectorAll('[data-arrow-nav-id]'),
+      ).map(x => x.dataset.arrowNavId)
+    },
+    selectedIdx: function() {
+      return this.flatIds.findIndex(id => id === this.$data.selectedId)
+    },
+  },
   methods: {
-    handleUp(e) {
-      console.log(`e`, e)
+    handleUp() {
+      const flatIds = this.flatIds
+      const selIdx = flatIds.findIndex(id => id === this.$data.selectedId)
+      console.log(`selIdx`, selIdx)
     },
     handleDown(e) {
       console.log(`e`, e)
