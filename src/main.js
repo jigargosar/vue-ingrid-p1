@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import 'tachyons'
+import LiquorTree from 'liquor-tree'
+
+Vue.use(LiquorTree)
 
 Vue.config.productionTip = false
 
