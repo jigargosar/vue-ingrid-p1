@@ -36,17 +36,16 @@ export default {
     selectedId: 'id_root',
     root: cr(),
   }),
-  computed: {
+  computed: {},
+  methods: {
     flatIds: function() {
       return Array.from(
         this.$el.querySelectorAll('[data-arrow-nav-id]'),
       ).map(x => x.dataset.arrowNavId)
     },
     selectedIdx: function() {
-      return this.flatIds.findIndex(id => id === this.$data.selectedId)
+      return this.flatIds().findIndex(id => id === this.$data.selectedId)
     },
-  },
-  methods: {
     focusSelected() {
       const focusableEl = this.$el.querySelector(
         `[data-arrow-nav-id="${this.$data.selectedId}"]`,
@@ -56,8 +55,8 @@ export default {
       }
     },
     handleUp() {
-      const flatIds = this.flatIds
-      const selIdx = this.selectedIdx
+      const flatIds = this.flatIds()
+      const selIdx = this.selectedIdx()
 
       const newIdx = selIdx - 1
       if (newIdx >= 0) {
@@ -66,8 +65,8 @@ export default {
       this.focusSelected()
     },
     handleDown() {
-      const flatIds = this.flatIds
-      const selIdx = this.selectedIdx
+      const flatIds = this.flatIds()
+      const selIdx = this.selectedIdx()
 
       const newIdx = selIdx + 1
       if (newIdx < flatIds.length) {
