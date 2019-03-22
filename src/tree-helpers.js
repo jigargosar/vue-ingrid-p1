@@ -5,6 +5,7 @@ export function newNode() {
   return {
     id: `id_${nanoid()}`,
     title: faker.name.lastName(),
+    collapsed: false,
     forest: [],
   }
 }
