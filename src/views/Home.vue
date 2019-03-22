@@ -59,6 +59,7 @@ export default {
             if (prevSib) {
               parent.forest.splice(idx, 1)
               prevSib.forest.push(tree)
+              this.$nextTick(this.focusSelected)
             }
           }
         },
