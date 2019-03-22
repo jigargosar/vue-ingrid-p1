@@ -33,7 +33,7 @@ export default {
   name: 'home',
   components: { NodeTree },
   data: () => ({
-    selectedId: 'HW',
+    selectedId: 'id_root',
     root: cr(),
   }),
 }
