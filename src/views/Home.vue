@@ -20,7 +20,7 @@
 
 import NodeTree from '../components/NodeTree'
 import { newNode } from '../tree-helpers'
-import { compose, defaultTo, mergeDeepRight } from 'ramda'
+import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
 function createRoot() {
@@ -51,7 +51,17 @@ export default {
       return {
         addNew: this.addNew,
         setSelectedOnFocus: this.setSelectedOnFocus,
-        indent: () => {},
+        indent: (tree, ancestors) => {
+          const parent = last(ancestors)
+          if (parent) {
+            const idx = parent.forest.indexOf(tree)
+            const prevSib = parent.forest[idx - 1]
+            if (prevSib) {
+              parent.forest.splice(idx, 1)
+              prevSib.forest.push(tree)
+            }
+          }
+        },
         outdent: () => {},
       }
     },
