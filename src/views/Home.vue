@@ -49,9 +49,9 @@ export default {
             if (prevSib) {
               parent.forest.splice(idx, 1)
               prevSib.forest.push(tree)
-              this.$nextTick(this.focusSelected)
             }
           }
+          this.$nextTick(this.focusSelected)
         },
         outdent: (tree, ancestors) => {
           const parent = last(ancestors)
