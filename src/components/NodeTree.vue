@@ -1,5 +1,5 @@
 <template>
-  <div class="pl3">
+  <div class="pl4">
     <div class="pv1">
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->
