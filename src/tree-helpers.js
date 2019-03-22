@@ -9,3 +9,13 @@ export function newNode() {
     forest: [],
   }
 }
+
+export function createRoot() {
+  const root = newNode()
+  root.id = 'id_root'
+  root.title = 'Root'
+  root.forest.push(newNode())
+  root.forest.push(newNode())
+  root.forest.push(newNode())
+  return root
+}

@@ -19,19 +19,9 @@
 // @ is an alias to /src
 
 import NodeTree from '../components/NodeTree'
-import { newNode } from '../tree-helpers'
+import { createRoot, newNode } from '../tree-helpers'
 import { compose, defaultTo, dropLast, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
-
-function createRoot() {
-  const root = newNode()
-  root.id = 'id_root'
-  root.title = 'Root'
-  root.forest.push(newNode())
-  root.forest.push(newNode())
-  root.forest.push(newNode())
-  return root
-}
 
 export default {
   name: 'home',
