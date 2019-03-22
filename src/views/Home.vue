@@ -1,11 +1,15 @@
 <template>
   <div
-    class="tl code"
+    class="tl code pr2"
     @keydown.up.prevent="handleUp"
     @keydown.down.prevent="handleDown"
     tabindex="0"
   >
-    <NodeTree :tree="root" :selectedId="selectedId" />
+    <NodeTree
+      :tree="root"
+      :selectedId="selectedId"
+      :setSelectedOnFocus="setSelectedOnFocus"
+    />
   </div>
 </template>
 
@@ -78,6 +82,10 @@ export default {
       if (newIdx < flatIds.length) {
         this.$data.selectedId = flatIds[newIdx]
       }
+      this.focusSelected()
+    },
+    setSelectedOnFocus(id) {
+      this.$data.selectedId = id
       this.focusSelected()
     },
   },
