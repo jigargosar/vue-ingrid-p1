@@ -18,15 +18,15 @@
 // @ is an alias to /src
 
 import NodeTree from '../components/NodeTree'
-import { nn } from '../tree-helpers'
+import { newNode } from '../tree-helpers'
 
-function cr() {
-  const root = nn()
+function createRoot() {
+  const root = newNode()
   root.id = 'id_root'
   root.title = 'Root'
-  root.forest.push(nn())
-  root.forest.push(nn())
-  root.forest.push(nn())
+  root.forest.push(newNode())
+  root.forest.push(newNode())
+  root.forest.push(newNode())
   return root
 }
 
@@ -35,7 +35,7 @@ export default {
   components: { NodeTree },
   data: () => ({
     selectedId: 'id_root',
-    root: cr(),
+    root: createRoot(),
   }),
   computed: {
     actions() {
@@ -94,7 +94,7 @@ export default {
       this.$nextTick(() => this.focusSelected())
     },
     addNew(tree, parent) {
-      let newTree = nn()
+      let newTree = newNode()
       if (parent) {
         let forest = parent.forest
         const idxOfTree = forest.findIndex(t => tree === t)
