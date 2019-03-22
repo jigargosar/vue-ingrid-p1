@@ -8,13 +8,30 @@
 // @ is an alias to /src
 
 import NodeTree from '../components/NodeTree'
+import * as nanoid from 'nanoid'
+import faker from 'faker'
+
+function nn() {
+  return {
+    id: nanoid(),
+    title: faker.name.lastName(),
+    forest: [],
+  }
+}
+
+function cr() {
+  const root = nn()
+  root.title = 'Root'
+  root.forest.push(nn())
+  return root
+}
 
 export default {
   name: 'home',
   components: { NodeTree },
   data: () => ({
     title: 'HW',
-    root: { title: 'Root', forest: [{ title: 'Node 1' }] },
+    root: cr(),
   }),
 }
 </script>
