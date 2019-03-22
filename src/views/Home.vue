@@ -23,6 +23,20 @@ import { createRoot, indent, newNode, outdent } from '../tree-helpers'
 import { compose, defaultTo, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
+function addNewTree(parent, tree) {
+  let newTree = newNode()
+  if (parent) {
+    let forest = parent.forest
+    const idxOfTree = forest.findIndex(t => tree === t)
+
+    forest.splice(idxOfTree + 1, 0, newTree)
+  } else {
+    // console.log(`this`, this)
+    tree.forest.push(newTree)
+  }
+  return newTree
+}
+
 export default {
   name: 'home',
   components: { NodeTree },
@@ -39,7 +53,10 @@ export default {
   computed: {
     actions() {
       return {
-        addNew: this.addNew,
+        addNew(parent, tree) {
+          let newTree = addNewTree(parent, tree)
+          this.setSelectedOnAdd(newTree.id)
+        },
         setSelectedOnFocus: this.setSelectedOnFocus,
         indent: (ancestors, tree) => {
           indent(ancestors, tree)
@@ -106,19 +123,6 @@ export default {
     setSelectedOnAdd(id) {
       this.selectedId = id
       this.$nextTick(this.focusSelected)
-    },
-    addNew(tree, parent) {
-      let newTree = newNode()
-      if (parent) {
-        let forest = parent.forest
-        const idxOfTree = forest.findIndex(t => tree === t)
-
-        forest.splice(idxOfTree + 1, 0, newTree)
-      } else {
-        // console.log(`this`, this)
-        tree.forest.push(newTree)
-      }
-      this.setSelectedOnAdd(newTree.id)
     },
   },
 }
