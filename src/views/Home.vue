@@ -3,7 +3,6 @@
     class="tl code pr2"
     @keydown.up.prevent="handleUp"
     @keydown.down.prevent="handleDown"
-    @keydown.enter.prevent="handleEnter"
     tabindex="0"
   >
     <NodeTree
@@ -18,16 +17,7 @@
 // @ is an alias to /src
 
 import NodeTree from '../components/NodeTree'
-import * as nanoid from 'nanoid'
-import faker from 'faker'
-
-function nn() {
-  return {
-    id: `id_${nanoid()}`,
-    title: faker.name.lastName(),
-    forest: [],
-  }
-}
+import { nn } from '../tree-helpers'
 
 function cr() {
   const root = nn()
@@ -84,7 +74,6 @@ export default {
         this.setSelectedOnKeyNav(flatIds[newIdx])
       }
     },
-    handleEnter() {},
     setSelectedOnFocus(id) {
       this.$data.selectedId = id
       // this.focusSelected()
