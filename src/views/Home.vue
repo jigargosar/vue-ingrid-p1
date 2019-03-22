@@ -45,6 +45,9 @@ export default {
       }
     },
   },
+  mounted() {
+    this.focusSelected()
+  },
   methods: {
     flatIds: function() {
       return Array.from(
