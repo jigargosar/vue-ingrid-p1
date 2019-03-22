@@ -10,15 +10,14 @@
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->
     </div>
-    <template v-for="child in tree.forest">
-      <NodeTree
-        :key="child.id"
-        :tree="child"
-        :selectedId="selectedId"
-        :parent="tree"
-        :actions="actions"
-      />
-    </template>
+    <NodeTree
+      v-for="child in tree.forest"
+      :key="child.id"
+      :tree="child"
+      :selectedId="selectedId"
+      :parent="tree"
+      :actions="actions"
+    />
   </div>
 </template>
 
