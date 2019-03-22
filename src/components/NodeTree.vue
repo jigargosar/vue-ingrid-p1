@@ -6,7 +6,7 @@
       tabindex="0"
       @focus="actions.setSelectedOnFocus(tree.id)"
       @keydown.enter.exact.prevent="actions.addNew(tree, parent)"
-      @keydown.tab.exact.prevent="actions.indent(tree, ancestors)"
+      @keydown.tab.exact.prevent="actions.indent(ancestors, tree)"
       @keydown.tab.shift.exact.prevent="actions.outdent(tree, ancestors)"
     >
       {{ tree.title }}
