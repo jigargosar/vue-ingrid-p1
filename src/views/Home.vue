@@ -56,9 +56,7 @@ export default {
   mounted() {
     this.focusSelected()
     this.$watch(
-      function() {
-        return this.$data
-      },
+      () => this.$data,
       () => setCache('vue-ingrid-ti', this.$data),
       { deep: true },
     )
