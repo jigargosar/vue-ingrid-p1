@@ -20,7 +20,7 @@
 import NodeTree from '../components/NodeTree'
 import { newNode } from '../tree-helpers'
 import { compose, defaultTo, mergeDeepRight } from 'ramda'
-import { getCached } from '../cache-helpers'
+import { getCached, setCache } from '../cache-helpers'
 
 function createRoot() {
   const root = newNode()
@@ -55,6 +55,13 @@ export default {
   },
   mounted() {
     this.focusSelected()
+    this.$watch(
+      function() {
+        return this.$data
+      },
+      () => setCache('vue-ingrid-ti', this.$data),
+      { deep: true },
+    )
   },
   methods: {
     flatIds: function() {
