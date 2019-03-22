@@ -1,5 +1,10 @@
 <template>
-  <div class="tl code">
+  <div
+    class="tl code"
+    @keydown.up.prevent="handleUp"
+    @keydown.down.prevent="handleDown"
+    tabindex="0"
+  >
     <NodeTree :tree="root" :selectedId="selectedId" />
   </div>
 </template>
@@ -36,5 +41,13 @@ export default {
     selectedId: 'id_root',
     root: cr(),
   }),
+  methods: {
+    handleUp(e) {
+      console.log(`e`, e)
+    },
+    handleDown(e) {
+      console.log(`e`, e)
+    },
+  },
 }
 </script>
