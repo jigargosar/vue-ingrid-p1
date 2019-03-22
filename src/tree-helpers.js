@@ -1,6 +1,6 @@
 import * as nanoid from 'nanoid'
 import faker from 'faker'
-import { last } from 'ramda'
+import { dropLast, last } from 'ramda'
 
 export function newNode() {
   return {
@@ -30,5 +30,19 @@ export function indent(ancestors, tree) {
       parent.forest.splice(idx, 1)
       prevSib.forest.push(tree)
     }
+  }
+}
+
+export function outdent(ancestors, tree) {
+  const parent = last(ancestors)
+  const grandParent = last(dropLast(1, ancestors))
+
+  if (parent && grandParent) {
+    const oldIdx = parent.forest.indexOf(tree)
+    parent.forest.splice(oldIdx, 1)
+
+    const newIdx = grandParent.forest.indexOf(parent) + 1
+
+    grandParent.forest.splice(newIdx, 0, tree)
   }
 }

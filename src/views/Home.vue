@@ -19,8 +19,8 @@
 // @ is an alias to /src
 
 import NodeTree from '../components/NodeTree'
-import { createRoot, indent, newNode } from '../tree-helpers'
-import { compose, defaultTo, dropLast, last, mergeDeepRight } from 'ramda'
+import { createRoot, indent, newNode, outdent } from '../tree-helpers'
+import { compose, defaultTo, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
 export default {
@@ -41,23 +41,13 @@ export default {
       return {
         addNew: this.addNew,
         setSelectedOnFocus: this.setSelectedOnFocus,
-        indent: (tree, ancestors) => {
+        indent: (ancestors, tree) => {
           indent(ancestors, tree)
           this.$nextTick(this.focusSelected)
         },
-        outdent: (tree, ancestors) => {
-          const parent = last(ancestors)
-          const grandParent = last(dropLast(1, ancestors))
-
-          if (parent && grandParent) {
-            const oldIdx = parent.forest.indexOf(tree)
-            parent.forest.splice(oldIdx, 1)
-
-            const newIdx = grandParent.forest.indexOf(parent) + 1
-
-            grandParent.forest.splice(newIdx, 0, tree)
-            this.$nextTick(this.focusSelected)
-          }
+        outdent: (ancestors, tree) => {
+          outdent(ancestors, tree)
+          this.$nextTick(this.focusSelected)
         },
       }
     },
