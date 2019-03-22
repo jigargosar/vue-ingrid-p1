@@ -90,7 +90,7 @@ export default {
       this.focusSelected()
     },
     setSelectedOnAdd(id) {
-      this.$data.selectedId = id
+      this.selectedId = id
       this.$nextTick(() => this.focusSelected())
     },
     addNew(tree, parent) {
