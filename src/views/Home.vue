@@ -19,6 +19,8 @@
 
 import NodeTree from '../components/NodeTree'
 import { newNode } from '../tree-helpers'
+import { compose, defaultTo, mergeDeepRight } from 'ramda'
+import { getCached } from '../cache-helpers'
 
 function createRoot() {
   const root = newNode()
@@ -33,10 +35,16 @@ function createRoot() {
 export default {
   name: 'home',
   components: { NodeTree },
-  data: () => ({
-    selectedId: 'id_root',
-    root: createRoot(),
-  }),
+  data: () =>
+    compose(
+      mergeDeepRight({
+        selectedId: 'id_root',
+        root: createRoot(),
+      }),
+      defaultTo({}),
+      getCached,
+    )('vue-ingrid-ti'),
+
   computed: {
     actions() {
       return {
