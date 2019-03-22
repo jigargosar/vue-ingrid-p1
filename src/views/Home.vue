@@ -13,7 +13,7 @@ import faker from 'faker'
 
 function nn() {
   return {
-    id: nanoid(),
+    id: `id_${nanoid()}`,
     title: faker.name.lastName(),
     forest: [],
   }
@@ -21,6 +21,7 @@ function nn() {
 
 function cr() {
   const root = nn()
+  root.id = 'id_root'
   root.title = 'Root'
   root.forest.push(nn())
   return root
@@ -30,7 +31,7 @@ export default {
   name: 'home',
   components: { NodeTree },
   data: () => ({
-    title: 'HW',
+    selectedId: 'HW',
     root: cr(),
   }),
 }
