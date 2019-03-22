@@ -82,11 +82,11 @@ export default {
       }
     },
     setSelectedOnFocus(id) {
-      this.$data.selectedId = id
+      this.selectedId = id
       // this.focusSelected()
     },
     setSelectedOnKeyNav(id) {
-      this.$data.selectedId = id
+      this.selectedId = id
       this.focusSelected()
     },
     setSelectedOnAdd(id) {
