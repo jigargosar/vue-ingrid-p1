@@ -9,8 +9,6 @@
       :parent="null"
       :tree="root"
       :selectedId="selectedId"
-      :setSelectedOnFocus="setSelectedOnFocus"
-      :addNew="addNew"
       :actions="actions"
     />
   </div>
@@ -39,14 +37,15 @@ export default {
     selectedId: 'id_root',
     root: cr(),
   }),
-  computed: {},
-  methods: {
+  computed: {
     actions() {
       return {
         addNew: this.addNew.bind(this),
         setSelectedOnFocus: this.setSelectedOnFocus.bind(this),
       }
     },
+  },
+  methods: {
     flatIds: function() {
       return Array.from(
         this.$el.querySelectorAll('[data-arrow-nav-id]'),

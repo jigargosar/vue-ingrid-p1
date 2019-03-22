@@ -4,7 +4,7 @@
       :class="['pa1 br2', { 'bg-blue white': selectedId === tree.id }]"
       :data-arrow-nav-id="tree.id"
       tabindex="0"
-      @focus="setSelectedOnFocus(tree.id)"
+      @focus="actions.setSelectedOnFocus(tree.id)"
       @keydown.enter.prevent="handleEnter"
     >
       {{ tree.title }}
@@ -15,9 +15,8 @@
         :key="child.id"
         :tree="child"
         :selectedId="selectedId"
-        :setSelectedOnFocus="setSelectedOnFocus"
         :parent="tree"
-        :addNew="addNew"
+        :actions="actions"
       />
     </template>
   </div>
@@ -30,12 +29,11 @@ export default {
     parent: Object,
     tree: Object,
     selectedId: String,
-    setSelectedOnFocus: Function,
-    addNew: Function,
+    actions: Object,
   },
   methods: {
     handleEnter() {
-      this.addNew(this.tree, this.parent)
+      this.actions.addNew(this.tree, this.parent)
     },
   },
 }
