@@ -1,5 +1,5 @@
 <template>
-  <div class="tl">
+  <div class="tl code">
     <NodeTree :title="root.title" :forest="root.forest" />
   </div>
 </template>
