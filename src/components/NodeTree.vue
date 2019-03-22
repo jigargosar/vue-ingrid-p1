@@ -8,6 +8,7 @@
         :key="tree.title"
         :title="tree.title"
         :forest="tree.forest"
+        :tree="tree"
       />
     </template>
   </div>
@@ -19,6 +20,7 @@ export default {
   props: {
     title: String,
     forest: Array,
+    tree: Object,
   },
 }
 </script>

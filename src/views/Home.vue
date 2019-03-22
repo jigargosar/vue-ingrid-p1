@@ -1,6 +1,6 @@
 <template>
   <div class="tl code">
-    <NodeTree :title="root.title" :forest="root.forest" />
+    <NodeTree :title="root.title" :forest="root.forest" :tree="root" />
   </div>
 </template>
 
