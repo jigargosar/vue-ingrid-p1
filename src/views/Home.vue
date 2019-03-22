@@ -3,6 +3,7 @@
     class="tl code pr2"
     @keydown.up.prevent="handleUp"
     @keydown.down.prevent="handleDown"
+    @keydown.enter.prevent="handleEnter"
     tabindex="0"
   >
     <NodeTree
@@ -84,7 +85,12 @@ export default {
       }
       this.focusSelected()
     },
+    handleEnter() {},
     setSelectedOnFocus(id) {
+      this.$data.selectedId = id
+      // this.focusSelected()
+    },
+    setSelectedOnKeyNav(id) {
       this.$data.selectedId = id
       this.focusSelected()
     },
