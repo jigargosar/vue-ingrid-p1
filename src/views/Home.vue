@@ -83,7 +83,6 @@ export default {
     },
     setSelectedOnFocus(id) {
       this.selectedId = id
-      // this.focusSelected()
     },
     setSelectedOnKeyNav(id) {
       this.selectedId = id
