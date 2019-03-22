@@ -12,6 +12,7 @@ export default {
   components: {},
   data: () => ({
     title: 'HW',
+    root: { title: 'Root', forest: [{ title: 'Node 1' }] },
   }),
 }
 </script>
