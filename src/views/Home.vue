@@ -40,8 +40,8 @@ export default {
   computed: {
     actions() {
       return {
-        addNew: this.addNew.bind(this),
-        setSelectedOnFocus: this.setSelectedOnFocus.bind(this),
+        addNew: this.addNew,
+        setSelectedOnFocus: this.setSelectedOnFocus,
       }
     },
   },
