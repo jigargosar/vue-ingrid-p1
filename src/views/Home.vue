@@ -90,7 +90,7 @@ export default {
     },
     setSelectedOnAdd(id) {
       this.selectedId = id
-      this.$nextTick(() => this.focusSelected())
+      this.$nextTick(this.focusSelected)
     },
     addNew(tree, parent) {
       let newTree = newNode()
