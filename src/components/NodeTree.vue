@@ -15,9 +15,10 @@
     <NodeTree
       v-for="child in tree.forest"
       :key="child.id"
+      :ancestors="[...ancestors, tree]"
+      :parent="tree"
       :tree="child"
       :selectedId="selectedId"
-      :parent="tree"
       :actions="actions"
     />
   </div>
@@ -27,6 +28,7 @@
 export default {
   name: 'NodeTree',
   props: {
+    ancestors: Array,
     parent: Object,
     tree: Object,
     selectedId: String,

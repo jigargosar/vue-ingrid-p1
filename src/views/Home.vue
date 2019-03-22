@@ -6,6 +6,7 @@
     tabindex="0"
   >
     <NodeTree
+      :ancestors="[]"
       :parent="null"
       :tree="root"
       :selectedId="selectedId"
