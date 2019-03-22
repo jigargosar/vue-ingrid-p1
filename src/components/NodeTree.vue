@@ -16,6 +16,7 @@
         :tree="child"
         :selectedId="selectedId"
         :setSelectedOnFocus="setSelectedOnFocus"
+        :parent="tree"
       />
     </template>
   </div>
