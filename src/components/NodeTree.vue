@@ -3,6 +3,7 @@
     <div
       :class="['pa1 br2', { 'bg-blue white': selectedId === tree.id }]"
       :data-arrow-nav-id="tree.id"
+      tabindex="0"
     >
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->
