@@ -5,7 +5,7 @@
     </div>
     <template v-for="tree in forest">
       <NodeTree
-        :key="tree.title"
+        :key="tree.id"
         :title="tree.title"
         :forest="tree.forest"
         :tree="tree"
