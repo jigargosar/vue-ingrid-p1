@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="sans-serif">
     <div id="nav" class="tc pa3">
       <router-link to="/">Home</router-link> |
       <router-link to="/old-home">Old Home</router-link> |
@@ -15,7 +15,7 @@ body {
   padding: 0;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
