@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    HW
+    {{ title }}
   </div>
 </template>
 
@@ -10,5 +10,8 @@
 export default {
   name: 'home',
   components: {},
+  data: () => ({
+    title: 'HW',
+  }),
 }
 </script>
