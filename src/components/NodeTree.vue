@@ -6,8 +6,8 @@
       tabindex="0"
       @focus="actions.setSelectedOnFocus(tree.id)"
       @keydown.enter.exact.prevent="actions.addNew(tree, parent)"
-      @keydown.tab.exact.prevent="actions.addNew(tree, parent)"
-      @keydown.tab.shift.exact.prevent="actions.addNew(tree, parent)"
+      @keydown.tab.exact.prevent="actions.indent(tree, parent)"
+      @keydown.tab.shift.exact.prevent="actions.outdent(tree, parent)"
     >
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->

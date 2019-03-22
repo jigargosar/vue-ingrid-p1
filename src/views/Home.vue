@@ -50,6 +50,8 @@ export default {
       return {
         addNew: this.addNew,
         setSelectedOnFocus: this.setSelectedOnFocus,
+        indent: () => {},
+        outdent: () => {},
       }
     },
   },
