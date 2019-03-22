@@ -54,11 +54,21 @@ export default {
   methods: {
     handleUp() {
       const flatIds = this.flatIds
-      const selIdx = flatIds.findIndex(id => id === this.$data.selectedId)
-      console.log(`selIdx`, selIdx)
+      const selIdx = this.selectedIdx
+
+      const newIdx = selIdx - 1
+      if (newIdx >= 0) {
+        this.$data.selectedId = flatIds[newIdx]
+      }
     },
-    handleDown(e) {
-      console.log(`e`, e)
+    handleDown() {
+      const flatIds = this.flatIds
+      const selIdx = this.selectedIdx
+
+      const newIdx = selIdx + 1
+      if (newIdx < flatIds.length) {
+        this.$data.selectedId = flatIds[newIdx]
+      }
     },
   },
 }
