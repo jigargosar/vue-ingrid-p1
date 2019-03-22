@@ -24,6 +24,8 @@ function cr() {
   root.id = 'id_root'
   root.title = 'Root'
   root.forest.push(nn())
+  root.forest.push(nn())
+  root.forest.push(nn())
   return root
 }
 
