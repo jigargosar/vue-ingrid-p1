@@ -1,6 +1,5 @@
 <template>
   <div class="tl">
-    {{ title }}
     <NodeTree :title="root.title" :forest="root.forest" />
   </div>
 </template>

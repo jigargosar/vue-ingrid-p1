@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pa3">
     {{ title }}
   </div>
 </template>
