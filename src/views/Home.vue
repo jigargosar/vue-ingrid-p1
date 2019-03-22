@@ -52,6 +52,14 @@ export default {
     },
   },
   methods: {
+    focusSelected() {
+      const focusableEl = this.$el.querySelector(
+        `[data-arrow-nav-id="${this.$data.selectedId}"]`,
+      )
+      if (focusableEl) {
+        focusableEl.focus()
+      }
+    },
     handleUp() {
       const flatIds = this.flatIds
       const selIdx = this.selectedIdx
@@ -60,6 +68,7 @@ export default {
       if (newIdx >= 0) {
         this.$data.selectedId = flatIds[newIdx]
       }
+      this.focusSelected()
     },
     handleDown() {
       const flatIds = this.flatIds
@@ -69,6 +78,7 @@ export default {
       if (newIdx < flatIds.length) {
         this.$data.selectedId = flatIds[newIdx]
       }
+      this.focusSelected()
     },
   },
 }
