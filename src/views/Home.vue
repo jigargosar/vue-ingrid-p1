@@ -71,7 +71,7 @@ export default {
 
       const newIdx = selIdx - 1
       if (newIdx >= 0) {
-        this.$data.selectedId = flatIds[newIdx]
+        this.setSelectedOnKeyNav(flatIds[newIdx])
       }
       this.focusSelected()
     },
@@ -81,9 +81,8 @@ export default {
 
       const newIdx = selIdx + 1
       if (newIdx < flatIds.length) {
-        this.$data.selectedId = flatIds[newIdx]
+        this.setSelectedOnKeyNav(flatIds[newIdx])
       }
-      this.focusSelected()
     },
     handleEnter() {},
     setSelectedOnFocus(id) {
