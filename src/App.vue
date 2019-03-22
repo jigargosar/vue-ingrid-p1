@@ -17,6 +17,7 @@
   color: #2c3e50;
   font-size: 16px;
 }
+
 #nav {
   a {
     font-weight: bold;
