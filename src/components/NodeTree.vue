@@ -5,7 +5,7 @@
       :data-arrow-nav-id="tree.id"
       tabindex="0"
       @focus="actions.setSelectedOnFocus(tree.id)"
-      @keydown.enter.prevent="handleEnter"
+      @keydown.enter.prevent="actions.addNew(tree, parent)"
     >
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->
@@ -31,11 +31,7 @@ export default {
     selectedId: String,
     actions: Object,
   },
-  methods: {
-    handleEnter() {
-      this.actions.addNew(this.tree, this.parent)
-    },
-  },
+  methods: {},
 }
 </script>
 
