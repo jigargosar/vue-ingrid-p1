@@ -10,6 +10,7 @@
       :tree="root"
       :selectedId="selectedId"
       :setSelectedOnFocus="setSelectedOnFocus"
+      :addNew="addNew"
     />
   </div>
 </template>
@@ -81,6 +82,23 @@ export default {
     setSelectedOnKeyNav(id) {
       this.$data.selectedId = id
       this.focusSelected()
+    },
+    setSelectedOnAdd(id) {
+      this.$data.selectedId = id
+      this.$nextTick(() => this.focusSelected())
+    },
+    addNew(tree, parent) {
+      let newTree = nn()
+      if (parent) {
+        let forest = parent.forest
+        const idxOfTree = forest.findIndex(t => tree === t)
+
+        forest.splice(idxOfTree + 1, 0, newTree)
+      } else {
+        // console.log(`this`, this)
+        tree.forest.push(newTree)
+      }
+      this.setSelectedOnAdd(newTree.id)
     },
   },
 }

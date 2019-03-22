@@ -17,14 +17,13 @@
         :selectedId="selectedId"
         :setSelectedOnFocus="setSelectedOnFocus"
         :parent="tree"
+        :addNew="addNew"
       />
     </template>
   </div>
 </template>
 
 <script>
-import { nn } from '../tree-helpers'
-
 export default {
   name: 'NodeTree',
   props: {
@@ -32,20 +31,11 @@ export default {
     tree: Object,
     selectedId: String,
     setSelectedOnFocus: Function,
+    addNew: Function,
   },
   methods: {
     handleEnter() {
-      let newTree = nn()
-      if (this.parent) {
-        let forest = this.parent.forest
-        const idxOfTree = forest.findIndex(t => this.tree === t)
-
-        forest.splice(idxOfTree + 1, 0, newTree)
-      } else {
-        // console.log(`this`, this)
-        this.tree.forest.push(newTree)
-      }
-      this.setSelectedOnFocus(newTree.id)
+      this.addNew(this.tree, this.parent)
     },
   },
 }
