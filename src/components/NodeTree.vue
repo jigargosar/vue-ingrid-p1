@@ -1,15 +1,11 @@
 <template>
   <div class="pl3">
     <div class="pv1">
-      {{ title }}
+      {{ tree.title }}
+      <!--<label><input type="text" v-model="tree.title"/></label>-->
     </div>
-    <template v-for="tree in forest">
-      <NodeTree
-        :key="tree.id"
-        :title="tree.title"
-        :forest="tree.forest"
-        :tree="tree"
-      />
+    <template v-for="child in tree.forest">
+      <NodeTree :key="child.id" :tree="child" />
     </template>
   </div>
 </template>
@@ -18,8 +14,6 @@
 export default {
   name: 'NodeTree',
   props: {
-    title: String,
-    forest: Array,
     tree: Object,
   },
 }
