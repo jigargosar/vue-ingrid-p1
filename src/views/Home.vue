@@ -11,6 +11,7 @@
       :selectedId="selectedId"
       :setSelectedOnFocus="setSelectedOnFocus"
       :addNew="addNew"
+      :actions="actions"
     />
   </div>
 </template>
@@ -40,6 +41,12 @@ export default {
   }),
   computed: {},
   methods: {
+    actions() {
+      return {
+        addNew: this.addNew.bind(this),
+        setSelectedOnFocus: this.setSelectedOnFocus.bind(this),
+      }
+    },
     flatIds: function() {
       return Array.from(
         this.$el.querySelectorAll('[data-arrow-nav-id]'),
