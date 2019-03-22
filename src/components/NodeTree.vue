@@ -5,7 +5,9 @@
       :data-arrow-nav-id="tree.id"
       tabindex="0"
       @focus="actions.setSelectedOnFocus(tree.id)"
-      @keydown.enter.prevent="actions.addNew(tree, parent)"
+      @keydown.enter.exact.prevent="actions.addNew(tree, parent)"
+      @keydown.tab.exact.prevent="actions.addNew(tree, parent)"
+      @keydown.tab.shift.exact.prevent="actions.addNew(tree, parent)"
     >
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->
