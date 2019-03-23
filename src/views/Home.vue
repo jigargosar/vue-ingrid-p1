@@ -51,7 +51,7 @@ export default {
     )('vue-ingrid-ti'),
 
   computed: {
-    computedFlatIds() {
+    visibleFlatIds() {
       const arr = []
       const reducer = node => {
         arr.push(node.id)
@@ -120,7 +120,7 @@ export default {
       //   computedFlatIds,
       //   equals(computedFlatIds, domFlatIds),
       // )
-      return this.computedFlatIds
+      return this.visibleFlatIds
     },
     selectedIdx: function() {
       return this.flatIds().findIndex(id => id === this.$data.selectedId)
