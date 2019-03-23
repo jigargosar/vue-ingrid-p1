@@ -123,11 +123,11 @@ export default {
       return this.visibleFlatIds
     },
     selectedIdx: function() {
-      return this.flatIds().findIndex(id => id === this.$data.selectedId)
+      return this.flatIds().findIndex(id => id === this.selectedId)
     },
     focusSelected() {
       const focusableEl = this.$el.querySelector(
-        `[data-arrow-nav-id="${this.$data.selectedId}"]`,
+        `[data-arrow-nav-id="${this.selectedId}"]`,
       )
       if (focusableEl) {
         focusableEl.focus()
