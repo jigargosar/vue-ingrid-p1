@@ -21,6 +21,8 @@
 import NodeTree from '../components/NodeTree'
 import {
   addNewTree,
+  canCollapseTree,
+  collapseTree,
   createRoot,
   flattenTreeIds,
   indent,
@@ -29,14 +31,6 @@ import {
 } from '../tree-helpers'
 import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
-
-function canCollapseTree(tree) {
-  return tree.forest.length > 0 && !tree.collapsed
-}
-
-function collapseTree(tree) {
-  tree.collapsed = true
-}
 
 export default {
   name: 'home',

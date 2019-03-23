@@ -80,3 +80,11 @@ export function flattenTreeIds(initialTree) {
   reducer(initialTree)
   return arr
 }
+
+export function canCollapseTree(tree) {
+  return tree.forest.length > 0 && !tree.collapsed
+}
+
+export function collapseTree(tree) {
+  tree.collapsed = true
+}
