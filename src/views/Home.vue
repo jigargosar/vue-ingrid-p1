@@ -96,8 +96,8 @@ export default {
           if (!parent) return
 
           const newId =
-            this.computeNullableNextId() ||
             this.computeNullablePrevId() ||
+            this.computeNullableNextId() ||
             this.root.id
 
           const idx = parent.forest.indexOf(tree)
