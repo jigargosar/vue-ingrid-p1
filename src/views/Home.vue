@@ -24,7 +24,7 @@ import {
   canCollapseTree,
   collapseTree,
   createRoot,
-  flattenTreeIds,
+  flattenVisibleTreeIds,
   indent,
   outdent,
   removeTree,
@@ -49,7 +49,7 @@ export default {
 
   computed: {
     visibleFlatIds() {
-      return flattenTreeIds(this.root)
+      return flattenVisibleTreeIds(this.root)
     },
     actions() {
       return {
