@@ -73,6 +73,13 @@ export default {
             parent.forest.splice(idx - 1, 0, tree)
           }
         },
+        moveDown(parent, tree) {
+          const idx = parent.forest.indexOf(tree)
+          if (idx < parent.forest.length - 1) {
+            parent.forest.splice(idx, 1)
+            parent.forest.splice(idx + 1, 0, tree)
+          }
+        },
       }
     },
   },
