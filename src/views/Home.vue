@@ -20,7 +20,7 @@
 
 import NodeTree from '../components/NodeTree'
 import { createRoot, indent, newNode, outdent } from '../tree-helpers'
-import { compose, defaultTo, equals, mergeDeepRight } from 'ramda'
+import { compose, defaultTo, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
 function addNewTree(parent, tree) {
@@ -103,16 +103,16 @@ export default {
   },
   methods: {
     flatIds: function() {
-      let domFlatIds = Array.from(
-        this.$el.querySelectorAll('[data-arrow-nav-id]'),
-      ).map(x => x.dataset.arrowNavId)
-      const computedFlatIds = this.computedFlatIds
-      console.log(
-        `computedFlatIds`,
-        computedFlatIds,
-        equals(computedFlatIds, domFlatIds),
-      )
-      return domFlatIds
+      // let domFlatIds = Array.from(
+      //   this.$el.querySelectorAll('[data-arrow-nav-id]'),
+      // ).map(x => x.dataset.arrowNavId)
+      // const computedFlatIds = this.computedFlatIds
+      // console.log(
+      //   `computedFlatIds`,
+      //   computedFlatIds,
+      //   equals(computedFlatIds, domFlatIds),
+      // )
+      return this.computedFlatIds
     },
     selectedIdx: function() {
       return this.flatIds().findIndex(id => id === this.$data.selectedId)
