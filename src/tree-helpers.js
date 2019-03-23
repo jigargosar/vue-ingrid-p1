@@ -71,12 +71,12 @@ export function removeTree(ancestors, tree) {
   return true
 }
 
-export function flattenTreeIds(node1) {
+export function flattenTreeIds(initialTree) {
   const arr = []
-  const reducer = node => {
-    arr.push(node.id)
-    node.forest.forEach(reducer)
+  const reducer = tree => {
+    arr.push(tree.id)
+    tree.forest.forEach(reducer)
   }
-  reducer(node1)
+  reducer(initialTree)
   return arr
 }
