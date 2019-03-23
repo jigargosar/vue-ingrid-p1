@@ -85,7 +85,7 @@ export function flattenVisibleTreeIds(initialTree) {
   const arr = []
   const reducer = tree => {
     arr.push(tree.id)
-    if (canCollapseTree(tree)) {
+    if (hasVisibleChildren(tree)) {
       tree.forest.forEach(reducer)
     }
   }
