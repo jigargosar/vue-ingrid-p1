@@ -90,6 +90,11 @@ export default {
           }
           this.$nextTick(this.focusSelected)
         },
+        remove: (parent, tree) => {
+          const idx = parent.forest.indexOf(tree)
+          parent.forest.splice(idx, 1)
+          this.$nextTick(this.focusSelected)
+        },
       }
     },
   },
@@ -125,13 +130,25 @@ export default {
         focusableEl.focus()
       }
     },
-    handleUp() {
+    computeNullableNextId: function() {
       const flatIds = this.flatIds()
       const selIdx = this.selectedIdx()
 
       const newIdx = selIdx - 1
-      if (newIdx >= 0) {
-        this.setSelectedOnKeyNav(flatIds[newIdx])
+      return newIdx >= 0 ? flatIds[newIdx] : null
+    },
+    computeNullablePrevId: function() {
+      const flatIds = this.flatIds()
+      const selIdx = this.selectedIdx()
+
+      const newIdx = selIdx - 1
+      return newIdx >= 0 ? flatIds[newIdx] : null
+    },
+    handleUp() {
+      let newId = this.computeNullableNextId()
+
+      if (newId) {
+        this.setSelectedOnKeyNav(newId)
       }
       this.focusSelected()
     },
