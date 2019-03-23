@@ -148,11 +148,6 @@ export default {
     selectTreeOnFocus(tree) {
       this.setSelectedId(tree.id)
     },
-    setSelectedOnAdd(id) {
-      this.selectedId = id
-      this.focusSelectedOnNextTick()
-    },
-
     setSelectedIdAndFocusOnNextTick(id) {
       this.selectedId = id
       this.focusSelectedOnNextTick()
