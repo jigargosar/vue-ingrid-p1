@@ -26,15 +26,17 @@ import { getCached, setCache } from '../cache-helpers'
 export default {
   name: 'home',
   components: { NodeTree },
-  data: () =>
-    compose(
+  data: () => {
+    let root = createRoot()
+    return compose(
       mergeDeepRight({
-        selectedId: 'id_root',
-        root: createRoot(),
+        selectedId: root.id,
+        root,
       }),
       defaultTo({}),
       getCached,
-    )('vue-ingrid-ti'),
+    )('vue-ingrid-ti')
+  },
 
   computed: {
     visibleFlatIds() {
