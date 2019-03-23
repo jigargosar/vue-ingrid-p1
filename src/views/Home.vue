@@ -22,6 +22,7 @@ import NodeTree from '../components/NodeTree'
 import {
   addNewTree,
   createRoot,
+  flattenTreeIds,
   indent,
   outdent,
   removeTree,
@@ -46,13 +47,7 @@ export default {
 
   computed: {
     visibleFlatIds() {
-      const arr = []
-      const reducer = node => {
-        arr.push(node.id)
-        node.forest.forEach(reducer)
-      }
-      reducer(this.root)
-      return arr
+      return flattenTreeIds(this.root)
     },
     actions() {
       return {

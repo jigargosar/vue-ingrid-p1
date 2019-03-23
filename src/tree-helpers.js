@@ -70,3 +70,13 @@ export function removeTree(ancestors, tree) {
   parent.forest.splice(idx, 1)
   return true
 }
+
+export function flattenTreeIds(node1) {
+  const arr = []
+  const reducer = node => {
+    arr.push(node.id)
+    node.forest.forEach(reducer)
+  }
+  reducer(node1)
+  return arr
+}
