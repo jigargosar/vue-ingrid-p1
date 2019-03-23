@@ -66,6 +66,13 @@ export default {
           outdent(ancestors, tree)
           this.$nextTick(this.focusSelected)
         },
+        moveUp(parent, tree) {
+          const idx = parent.forest.indexOf(tree)
+          if (idx > 0) {
+            parent.forest.splice(idx, 1)
+            parent.forest.splice(idx - 1, 0, tree)
+          }
+        },
       }
     },
   },
