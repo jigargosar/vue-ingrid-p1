@@ -81,7 +81,23 @@ export function flattenTreeIds(initialTree) {
   return arr
 }
 
+export function flattenVisibleTreeIds(initialTree) {
+  const arr = []
+  const reducer = tree => {
+    arr.push(tree.id)
+    if (canCollapseTree(tree)) {
+      tree.forest.forEach(reducer)
+    }
+  }
+  reducer(initialTree)
+  return arr
+}
+
 export function canCollapseTree(tree) {
+  return hasVisibleChildren(tree)
+}
+
+export function hasVisibleChildren(tree) {
   return tree.forest.length > 0 && !tree.collapsed
 }
 
