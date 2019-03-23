@@ -76,6 +76,7 @@ export default {
           this.$nextTick(this.focusSelected)
         },
         moveUp: (parent, tree) => {
+          if (!parent) return
           const idx = parent.forest.indexOf(tree)
           if (idx > 0) {
             parent.forest.splice(idx, 1)
@@ -83,6 +84,7 @@ export default {
           }
         },
         moveDown: (parent, tree) => {
+          if (!parent) return
           const idx = parent.forest.indexOf(tree)
           if (idx < parent.forest.length - 1) {
             parent.forest.splice(idx, 1)
@@ -91,6 +93,7 @@ export default {
           this.$nextTick(this.focusSelected)
         },
         remove: (parent, tree) => {
+          if (!parent) return
           const idx = parent.forest.indexOf(tree)
           parent.forest.splice(idx, 1)
           this.$nextTick(this.focusSelected)
