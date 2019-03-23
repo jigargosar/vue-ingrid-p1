@@ -147,14 +147,18 @@ export default {
       const selIdx = this.selectedIdx()
 
       const newIdx = selIdx - 1
-      return newIdx >= 0 ? flatIds[newIdx] : null
+      return newIdx >= 0 && newIdx < flatIds.length
+        ? flatIds[newIdx]
+        : null
     },
     computeNullablePrevId: function() {
       const flatIds = this.flatIds()
       const selIdx = this.selectedIdx()
 
       const newIdx = selIdx + 1
-      return newIdx >= 0 ? flatIds[newIdx] : null
+      return newIdx >= 0 && newIdx < flatIds.length
+        ? flatIds[newIdx]
+        : null
     },
     handleUp() {
       let newId = this.computeNullableNextId()
