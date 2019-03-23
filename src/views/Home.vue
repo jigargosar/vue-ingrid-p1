@@ -144,7 +144,7 @@ export default {
       const flatIds = this.flatIds()
       const selIdx = this.selectedIdx()
 
-      const newIdx = selIdx - 1
+      const newIdx = selIdx + 1
       return newIdx >= 0 ? flatIds[newIdx] : null
     },
     handleUp() {
@@ -156,13 +156,12 @@ export default {
       this.focusSelected()
     },
     handleDown() {
-      const flatIds = this.flatIds()
-      const selIdx = this.selectedIdx()
+      let newId = this.computeNullablePrevId()
 
-      const newIdx = selIdx + 1
-      if (newIdx < flatIds.length) {
-        this.setSelectedOnKeyNav(flatIds[newIdx])
+      if (newId) {
+        this.setSelectedOnKeyNav(newId)
       }
+      this.focusSelected()
     },
     setSelectedOnFocus(id) {
       this.selectedId = id
