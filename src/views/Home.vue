@@ -125,9 +125,6 @@ export default {
     selectedIdx: function() {
       return this.flatIds().findIndex(id => id === this.$data.selectedId)
     },
-    setSelectedId(newId) {
-      this.selectedId = newId
-    },
     focusSelected() {
       const focusableEl = this.$el.querySelector(
         `[data-arrow-nav-id="${this.$data.selectedId}"]`,
@@ -146,7 +143,7 @@ export default {
       this.focusSelectedOnNextTick()
     },
     selectTreeOnFocus(tree) {
-      this.setSelectedId(tree.id)
+      this.selectedId = tree.id
     },
     setSelectedIdAndFocusOnNextTick(id) {
       this.selectedId = id
