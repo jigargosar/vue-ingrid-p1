@@ -94,8 +94,17 @@ export default {
         },
         remove: (parent, tree) => {
           if (!parent) return
+
+          const newId =
+            this.computeNullablePrevId() ||
+            this.computeNullableNextId() ||
+            this.root.id
+
           const idx = parent.forest.indexOf(tree)
           parent.forest.splice(idx, 1)
+
+          this.setSelectedOnAdd(newId)
+
           this.$nextTick(this.focusSelected)
         },
       }
