@@ -50,11 +50,11 @@ export default {
     },
     actions() {
       return {
+        setSelectedOnFocus: this.setSelectedOnFocus,
         addNew: (ancestors, tree) => {
           let newTree = addNewTree(ancestors, tree)
           this.setSelectedOnAdd(newTree.id)
         },
-        setSelectedOnFocus: this.setSelectedOnFocus,
         indent: (ancestors, tree) => {
           indent(ancestors, tree)
           this.$nextTick(this.focusSelected)
