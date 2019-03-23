@@ -96,8 +96,8 @@ export default {
           if (!parent) return
 
           const newId =
-            this.computeNullablePrevId() ||
             this.computeNullableNextId() ||
+            this.computeNullablePrevId() ||
             this.root.id
 
           const idx = parent.forest.indexOf(tree)
@@ -142,7 +142,7 @@ export default {
         focusableEl.focus()
       }
     },
-    computeNullableNextId: function() {
+    computeNullablePrevId: function() {
       const flatIds = this.flatIds()
       const selIdx = this.selectedIdx()
 
@@ -151,7 +151,7 @@ export default {
         ? flatIds[newIdx]
         : null
     },
-    computeNullablePrevId: function() {
+    computeNullableNextId: function() {
       const flatIds = this.flatIds()
       const selIdx = this.selectedIdx()
 
@@ -161,7 +161,7 @@ export default {
         : null
     },
     handleUp() {
-      let newId = this.computeNullableNextId()
+      let newId = this.computeNullablePrevId()
 
       if (newId) {
         this.setSelectedOnKeyNav(newId)
@@ -169,7 +169,7 @@ export default {
       this.focusSelected()
     },
     handleDown() {
-      let newId = this.computeNullablePrevId()
+      let newId = this.computeNullableNextId()
 
       if (newId) {
         this.setSelectedOnKeyNav(newId)
