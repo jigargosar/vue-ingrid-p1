@@ -20,7 +20,7 @@
 
 import NodeTree from '../components/NodeTree'
 import { createRoot, indent, newNode, outdent } from '../tree-helpers'
-import { compose, defaultTo, mergeDeepRight } from 'ramda'
+import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
 function addNewTree(parent, tree) {
@@ -92,7 +92,8 @@ export default {
           }
           this.$nextTick(this.focusSelected)
         },
-        remove: (parent, tree) => {
+        remove: (ancestors, tree) => {
+          const parent = last(ancestors)
           if (!parent) return
 
           const newId =
