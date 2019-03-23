@@ -79,7 +79,7 @@ export default {
             parent.forest.splice(idx, 1)
             parent.forest.splice(idx + 1, 0, tree)
           }
-          this.$nextTick(this.focusSelected)
+          this.focusSelectedOnNextTick()
         },
         remove: (ancestors, tree) => {
           const removeSuccess = removeTree(ancestors, tree)
