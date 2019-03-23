@@ -128,6 +128,12 @@ export default {
     setSelectedId(newId) {
       this.selectedId = newId
     },
+    onMaybeSelectedIdChange(newId) {
+      if (newId && newId !== this.selectedId) {
+        this.selectedId = newId
+      }
+      this.focusSelectedOnNextTick()
+    },
     focusSelected() {
       const focusableEl = this.$el.querySelector(
         `[data-arrow-nav-id="${this.$data.selectedId}"]`,
