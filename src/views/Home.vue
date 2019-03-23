@@ -128,12 +128,6 @@ export default {
     setSelectedId(newId) {
       this.selectedId = newId
     },
-    onMaybeSelectedIdChange(newId) {
-      if (newId && newId !== this.selectedId) {
-        this.selectedId = newId
-      }
-      this.focusSelectedOnNextTick()
-    },
     focusSelected() {
       const focusableEl = this.$el.querySelector(
         `[data-arrow-nav-id="${this.$data.selectedId}"]`,
@@ -145,12 +139,14 @@ export default {
     focusSelectedOnNextTick() {
       this.$nextTick(this.focusSelected)
     },
+    maybeChangeSelectedId(newId) {
+      if (newId && newId !== this.selectedId) {
+        this.selectedId = newId
+      }
+      this.focusSelectedOnNextTick()
+    },
     selectTreeOnFocus(tree) {
       this.setSelectedId(tree.id)
-    },
-    setSelectedOnKeyNav(id) {
-      this.selectedId = id
-      this.focusSelected()
     },
     setSelectedOnAdd(id) {
       this.selectedId = id
@@ -180,20 +176,10 @@ export default {
         : null
     },
     handleUp() {
-      let newId = this.computeNullablePrevId()
-
-      if (newId) {
-        this.setSelectedId(newId)
-      }
-      this.focusSelected()
+      this.maybeChangeSelectedId(this.computeNullablePrevId())
     },
     handleDown() {
-      let newId = this.computeNullableNextId()
-
-      if (newId) {
-        this.setSelectedId(newId)
-      }
-      this.focusSelected()
+      this.maybeChangeSelectedId(this.computeNullableNextId())
     },
   },
 }
