@@ -22,8 +22,10 @@ import NodeTree from '../components/NodeTree'
 import {
   addNewTree,
   canCollapseTree,
+  canExpandTree,
   collapseTree,
   createRoot,
+  expandTree,
   flattenVisibleTreeIds,
   indent,
   outdent,
@@ -103,6 +105,13 @@ export default {
             this.setSelectedIdAndFocusOnNextTick(parent.id)
           }
         },
+        expandOrGoNext: (ancestors, tree) => {
+          if (canExpandTree(tree)) {
+            expandTree(tree)
+          } else {
+            this.goNext()
+          }
+        },
       }
     },
   },
@@ -175,8 +184,11 @@ export default {
     handleUp() {
       this.maybeChangeSelectedId(this.computeNullablePrevId())
     },
-    handleDown() {
+    goNext() {
       this.maybeChangeSelectedId(this.computeNullableNextId())
+    },
+    handleDown() {
+      this.goNext()
     },
   },
 }

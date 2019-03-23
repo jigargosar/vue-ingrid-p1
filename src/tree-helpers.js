@@ -71,15 +71,15 @@ export function removeTree(ancestors, tree) {
   return true
 }
 
-export function flattenTreeIds(initialTree) {
-  const arr = []
-  const reducer = tree => {
-    arr.push(tree.id)
-    tree.forest.forEach(reducer)
-  }
-  reducer(initialTree)
-  return arr
-}
+// export function flattenTreeIds(initialTree) {
+//   const arr = []
+//   const reducer = tree => {
+//     arr.push(tree.id)
+//     tree.forest.forEach(reducer)
+//   }
+//   reducer(initialTree)
+//   return arr
+// }
 
 export function flattenVisibleTreeIds(initialTree) {
   const arr = []
@@ -93,14 +93,22 @@ export function flattenVisibleTreeIds(initialTree) {
   return arr
 }
 
-export function canCollapseTree(tree) {
-  return hasVisibleChildren(tree)
-}
-
 export function hasVisibleChildren(tree) {
   return tree.forest.length > 0 && !tree.collapsed
 }
 
+export function canCollapseTree(tree) {
+  return hasVisibleChildren(tree)
+}
+
 export function collapseTree(tree) {
   tree.collapsed = true
+}
+
+export function canExpandTree(tree) {
+  return tree.forest.length > 0 && tree.collapsed
+}
+
+export function expandTree(tree) {
+  tree.collapsed = false
 }
