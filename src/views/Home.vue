@@ -50,7 +50,7 @@ export default {
     },
     actions() {
       return {
-        setSelectedOnFocus: this.setSelectedOnFocus,
+        selectTreeOnFocus: this.selectTreeOnFocus,
         addNew: (ancestors, tree) => {
           let newTree = addNewTree(ancestors, tree)
           this.setSelectedOnAdd(newTree.id)
@@ -165,8 +165,8 @@ export default {
       }
       this.focusSelected()
     },
-    setSelectedOnFocus(id) {
-      this.selectedId = id
+    selectTreeOnFocus(tree) {
+      this.selectedId = tree.id
     },
     setSelectedOnKeyNav(id) {
       this.selectedId = id
