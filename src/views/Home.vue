@@ -25,17 +25,11 @@ import { getCached, setCache } from '../cache-helpers'
 
 function removeTree(ancestors, tree) {
   const parent = last(ancestors)
-  if (!parent) return
-
-  const newId =
-    this.computeNullablePrevId() ||
-    this.computeNullableNextId() ||
-    this.root.id
+  if (!parent) return false
 
   const idx = parent.forest.indexOf(tree)
   parent.forest.splice(idx, 1)
-
-  return newId
+  return true
 }
 export default {
   name: 'home',
@@ -95,8 +89,12 @@ export default {
           this.$nextTick(this.focusSelected)
         },
         remove: (ancestors, tree) => {
-          const newId = removeTree(ancestors, tree)
-          if (newId) {
+          const removeSuccess = removeTree(ancestors, tree)
+          if (removeSuccess) {
+            const newId =
+              this.computeNullablePrevId() ||
+              this.computeNullableNextId() ||
+              this.root.id
             this.setSelectedOnAdd(newId)
           }
           this.$nextTick(this.focusSelected)
