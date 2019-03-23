@@ -125,15 +125,6 @@ export default {
   },
   methods: {
     flatIds: function() {
-      // let domFlatIds = Array.from(
-      //   this.$el.querySelectorAll('[data-arrow-nav-id]'),
-      // ).map(x => x.dataset.arrowNavId)
-      // const computedFlatIds = this.computedFlatIds
-      // console.log(
-      //   `computedFlatIds`,
-      //   computedFlatIds,
-      //   equals(computedFlatIds, domFlatIds),
-      // )
       return this.visibleFlatIds
     },
     selectedIdx: function() {
