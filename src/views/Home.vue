@@ -53,7 +53,7 @@ export default {
   computed: {
     actions() {
       return {
-        addNew(parent, tree) {
+        addNew: (parent, tree) => {
           let newTree = addNewTree(parent, tree)
           this.setSelectedOnAdd(newTree.id)
         },
@@ -66,14 +66,14 @@ export default {
           outdent(ancestors, tree)
           this.$nextTick(this.focusSelected)
         },
-        moveUp(parent, tree) {
+        moveUp: (parent, tree) => {
           const idx = parent.forest.indexOf(tree)
           if (idx > 0) {
             parent.forest.splice(idx, 1)
             parent.forest.splice(idx - 1, 0, tree)
           }
         },
-        moveDown(parent, tree) {
+        moveDown: (parent, tree) => {
           const idx = parent.forest.indexOf(tree)
           if (idx < parent.forest.length - 1) {
             parent.forest.splice(idx, 1)
