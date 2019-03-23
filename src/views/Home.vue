@@ -61,7 +61,7 @@ export default {
         selectTreeOnFocus: this.selectTreeOnFocus,
         addNew: (ancestors, tree) => {
           let newTree = addNewTree(ancestors, tree)
-          this.setSelectedOnAdd(newTree.id)
+          this.setSelectedIdAndFocusOnNextTick(newTree.id)
         },
         indent: (ancestors, tree) => {
           indent(ancestors, tree)
