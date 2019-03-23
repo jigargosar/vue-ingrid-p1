@@ -23,6 +23,20 @@ import { addNewTree, createRoot, indent, outdent } from '../tree-helpers'
 import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
+function removeTree(ancestors, tree) {
+  const parent = last(ancestors)
+  if (!parent) return
+
+  const newId =
+    this.computeNullablePrevId() ||
+    this.computeNullableNextId() ||
+    this.root.id
+
+  const idx = parent.forest.indexOf(tree)
+  parent.forest.splice(idx, 1)
+
+  return newId
+}
 export default {
   name: 'home',
   components: { NodeTree },
@@ -81,19 +95,10 @@ export default {
           this.$nextTick(this.focusSelected)
         },
         remove: (ancestors, tree) => {
-          const parent = last(ancestors)
-          if (!parent) return
-
-          const newId =
-            this.computeNullablePrevId() ||
-            this.computeNullableNextId() ||
-            this.root.id
-
-          const idx = parent.forest.indexOf(tree)
-          parent.forest.splice(idx, 1)
-
-          this.setSelectedOnAdd(newId)
-
+          const newId = removeTree(ancestors, tree)
+          if (newId) {
+            this.setSelectedOnAdd(newId)
+          }
           this.$nextTick(this.focusSelected)
         },
       }
