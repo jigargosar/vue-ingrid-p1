@@ -23,7 +23,8 @@ import { createRoot, indent, newNode, outdent } from '../tree-helpers'
 import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
-function addNewTree(parent, tree) {
+function addNewTree(ancestors, tree) {
+  const parent = last(ancestors)
   let newTree = newNode()
   if (parent) {
     let forest = parent.forest
@@ -62,8 +63,8 @@ export default {
     },
     actions() {
       return {
-        addNew: (parent, tree) => {
-          let newTree = addNewTree(parent, tree)
+        addNew: (ancestors, tree) => {
+          let newTree = addNewTree(ancestors, tree)
           this.setSelectedOnAdd(newTree.id)
         },
         setSelectedOnFocus: this.setSelectedOnFocus,

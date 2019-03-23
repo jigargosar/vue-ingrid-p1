@@ -5,7 +5,7 @@
       :data-arrow-nav-id="tree.id"
       tabindex="0"
       @focus="actions.setSelectedOnFocus(tree.id)"
-      @keydown.enter.exact.prevent="actions.addNew(parent, tree)"
+      @keydown.enter.exact.prevent="actions.addNew(ancestors, tree)"
       @keydown.tab.exact.prevent="actions.indent(ancestors, tree)"
       @keydown.tab.shift.exact.prevent="actions.outdent(ancestors, tree)"
       @keydown.up.meta.exact.prevent="actions.moveUp(parent, tree)"
