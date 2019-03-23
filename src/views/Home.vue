@@ -20,7 +20,7 @@
 
 import NodeTree from '../components/NodeTree'
 import { createRoot, indent, newNode, outdent } from '../tree-helpers'
-import { compose, defaultTo, mergeDeepRight } from 'ramda'
+import { compose, defaultTo, equals, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
 function addNewTree(parent, tree) {
@@ -51,6 +51,15 @@ export default {
     )('vue-ingrid-ti'),
 
   computed: {
+    computedFlatIds() {
+      const arr = []
+      const reducer = node => {
+        arr.push(node.id)
+        node.forest.forEach(reducer)
+      }
+      reducer(this.root)
+      return arr
+    },
     actions() {
       return {
         addNew: (parent, tree) => {
@@ -94,9 +103,16 @@ export default {
   },
   methods: {
     flatIds: function() {
-      return Array.from(
+      let domFlatIds = Array.from(
         this.$el.querySelectorAll('[data-arrow-nav-id]'),
       ).map(x => x.dataset.arrowNavId)
+      const computedFlatIds = this.computedFlatIds
+      console.log(
+        `computedFlatIds`,
+        computedFlatIds,
+        equals(computedFlatIds, domFlatIds),
+      )
+      return domFlatIds
     },
     selectedIdx: function() {
       return this.flatIds().findIndex(id => id === this.$data.selectedId)
