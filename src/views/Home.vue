@@ -1,8 +1,8 @@
 <template>
   <div
     class="tl code pr2"
-    @keydown.up.prevent="handleUp"
-    @keydown.down.prevent="handleDown"
+    @keydown.up.exact.prevent="handleUp"
+    @keydown.down.exact.prevent="handleDown"
     tabindex="0"
   >
     <NodeTree

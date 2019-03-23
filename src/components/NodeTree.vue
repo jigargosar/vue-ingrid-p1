@@ -8,6 +8,7 @@
       @keydown.enter.exact.prevent="actions.addNew(parent, tree)"
       @keydown.tab.exact.prevent="actions.indent(ancestors, tree)"
       @keydown.tab.shift.exact.prevent="actions.outdent(ancestors, tree)"
+      @keydown.up.meta.exact.prevent="actions.moveUp(parent, tree)"
     >
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->
