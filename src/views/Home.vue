@@ -27,8 +27,16 @@ import {
   outdent,
   removeTree,
 } from '../tree-helpers'
-import { compose, defaultTo, mergeDeepRight } from 'ramda'
+import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
+
+function canCollapseTree(tree) {
+  return tree.forest.length > 0 && !tree.collapsed
+}
+
+function collapseTree(tree) {
+  tree.collapsed = true
+}
 
 export default {
   name: 'home',
@@ -89,6 +97,16 @@ export default {
               this.computeNullableNextId() ||
               this.root.id
             this.setSelectedIdAndFocusOnNextTick(newId)
+          }
+        },
+        collapseOrGoUp: (ancestors, tree) => {
+          const parent = last(ancestors)
+          if (!parent) return
+
+          if (canCollapseTree(tree)) {
+            collapseTree(tree)
+          } else {
+            this.setSelectedIdAndFocusOnNextTick(parent.id)
           }
         },
       }

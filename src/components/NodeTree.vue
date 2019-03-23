@@ -11,6 +11,7 @@
       @keydown.up.meta.exact.prevent="actions.moveUp(parent, tree)"
       @keydown.down.meta.exact.prevent="actions.moveDown(parent, tree)"
       @keydown.delete.exact.prevent="actions.remove(ancestors, tree)"
+      @keydown.left.exact.prevent="actions.collapseOrGoUp(ancestors, tree)"
     >
       {{ tree.title }}
       <!--<label><input type="text" v-model="tree.title"/></label>-->
