@@ -61,3 +61,12 @@ export function addNewTree(ancestors, tree) {
   }
   return newTree
 }
+
+export function removeTree(ancestors, tree) {
+  const parent = last(ancestors)
+  if (!parent) return false
+
+  const idx = parent.forest.indexOf(tree)
+  parent.forest.splice(idx, 1)
+  return true
+}

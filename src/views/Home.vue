@@ -19,18 +19,16 @@
 // @ is an alias to /src
 
 import NodeTree from '../components/NodeTree'
-import { addNewTree, createRoot, indent, outdent } from '../tree-helpers'
-import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
+import {
+  addNewTree,
+  createRoot,
+  indent,
+  outdent,
+  removeTree,
+} from '../tree-helpers'
+import { compose, defaultTo, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
 
-function removeTree(ancestors, tree) {
-  const parent = last(ancestors)
-  if (!parent) return false
-
-  const idx = parent.forest.indexOf(tree)
-  parent.forest.splice(idx, 1)
-  return true
-}
 export default {
   name: 'home',
   components: { NodeTree },
