@@ -116,8 +116,6 @@ export default {
     },
   },
   mounted() {
-    // eslint-disable-next-line
-    console.error('debugger!!!')
     this.focusSelected()
     this.$watch(
       () => this.$data,
