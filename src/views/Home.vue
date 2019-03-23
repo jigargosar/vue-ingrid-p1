@@ -19,24 +19,9 @@
 // @ is an alias to /src
 
 import NodeTree from '../components/NodeTree'
-import { createRoot, indent, newNode, outdent } from '../tree-helpers'
+import { addNewTree, createRoot, indent, outdent } from '../tree-helpers'
 import { compose, defaultTo, last, mergeDeepRight } from 'ramda'
 import { getCached, setCache } from '../cache-helpers'
-
-function addNewTree(ancestors, tree) {
-  const parent = last(ancestors)
-  let newTree = newNode()
-  if (parent) {
-    let forest = parent.forest
-    const idxOfTree = forest.findIndex(t => tree === t)
-
-    forest.splice(idxOfTree + 1, 0, newTree)
-  } else {
-    // console.log(`this`, this)
-    tree.forest.push(newTree)
-  }
-  return newTree
-}
 
 export default {
   name: 'home',

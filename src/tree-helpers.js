@@ -46,3 +46,18 @@ export function outdent(ancestors, tree) {
     grandParent.forest.splice(newIdx, 0, tree)
   }
 }
+
+export function addNewTree(ancestors, tree) {
+  const parent = last(ancestors)
+  let newTree = newNode()
+  if (parent) {
+    let forest = parent.forest
+    const idxOfTree = forest.findIndex(t => tree === t)
+
+    forest.splice(idxOfTree + 1, 0, newTree)
+  } else {
+    // console.log(`this`, this)
+    tree.forest.push(newTree)
+  }
+  return newTree
+}
