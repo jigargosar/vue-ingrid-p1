@@ -95,9 +95,8 @@ export default {
               this.computeNullablePrevId() ||
               this.computeNullableNextId() ||
               this.root.id
-            this.setSelectedOnAdd(newId)
+            this.setSelectedIdAndFocusOnNextTick(newId)
           }
-          this.$nextTick(this.focusSelected)
         },
       }
     },
@@ -126,6 +125,9 @@ export default {
     selectedIdx: function() {
       return this.flatIds().findIndex(id => id === this.$data.selectedId)
     },
+    setSelectedId(newId) {
+      this.selectedId = newId
+    },
     focusSelected() {
       const focusableEl = this.$el.querySelector(
         `[data-arrow-nav-id="${this.$data.selectedId}"]`,
@@ -133,6 +135,25 @@ export default {
       if (focusableEl) {
         focusableEl.focus()
       }
+    },
+    focusSelectedOnNextTick() {
+      this.$nextTick(this.focusSelected)
+    },
+    selectTreeOnFocus(tree) {
+      this.setSelectedId(tree.id)
+    },
+    setSelectedOnKeyNav(id) {
+      this.selectedId = id
+      this.focusSelected()
+    },
+    setSelectedOnAdd(id) {
+      this.selectedId = id
+      this.focusSelectedOnNextTick()
+    },
+
+    setSelectedIdAndFocusOnNextTick(id) {
+      this.selectedId = id
+      this.focusSelectedOnNextTick()
     },
     computeNullablePrevId: function() {
       const flatIds = this.flatIds()
@@ -156,7 +177,7 @@ export default {
       let newId = this.computeNullablePrevId()
 
       if (newId) {
-        this.setSelectedOnKeyNav(newId)
+        this.setSelectedId(newId)
       }
       this.focusSelected()
     },
@@ -164,20 +185,9 @@ export default {
       let newId = this.computeNullableNextId()
 
       if (newId) {
-        this.setSelectedOnKeyNav(newId)
+        this.setSelectedId(newId)
       }
       this.focusSelected()
-    },
-    selectTreeOnFocus(tree) {
-      this.selectedId = tree.id
-    },
-    setSelectedOnKeyNav(id) {
-      this.selectedId = id
-      this.focusSelected()
-    },
-    setSelectedOnAdd(id) {
-      this.selectedId = id
-      this.$nextTick(this.focusSelected)
     },
   },
 }
